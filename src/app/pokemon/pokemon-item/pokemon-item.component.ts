@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PokemonItemComponent implements OnInit {
   @Input() url: string = '';
+  @Input() name: string = '';
 
   constructor() {}
 
