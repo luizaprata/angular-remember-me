@@ -7,11 +7,10 @@ type HTMLElementEvent<T extends HTMLElement> = KeyboardEvent & {
 };
 
 @Component({
-  selector: 'app-pokemon-list',
-  templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.scss'],
+  templateUrl: './pokemon-list-screen.component.html',
+  styleUrls: ['./pokemon-list-screen.component.scss'],
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListScreenComponent implements OnInit {
   pokemonsList: List[] = [];
   filter: string = '';
 

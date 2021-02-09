@@ -1,0 +1,5 @@
+<div *ngIf="!list.length"><p>Nenhum pokemon!</p></div>
+
+<div *ngFor="let pokemon of list">
+  <app-pokemon-list-item [name]="pokemon.name"></app-pokemon-list-item>
+</div>

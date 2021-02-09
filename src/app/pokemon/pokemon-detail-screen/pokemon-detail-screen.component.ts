@@ -3,11 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { PokemonService, PokemonResponse } from '../pokemon.service';
 
 @Component({
-  selector: 'app-pokemon-detail',
-  templateUrl: './pokemon-detail.component.html',
-  styleUrls: ['./pokemon-detail.component.scss'],
+  templateUrl: './pokemon-detail-screen.component.html',
+  styleUrls: ['./pokemon-detail-screen.component.scss'],
 })
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailScreenComponent implements OnInit {
   pokemon: PokemonResponse | null = null;
 
   constructor(

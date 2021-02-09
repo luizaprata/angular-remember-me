@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { List } from '../../pokemon.service';
 
 @Component({
-  selector: 'app-pokemons',
-  templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.scss'],
+  selector: 'app-pokemon-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
 })
-export class PokemonsComponent implements OnInit {
+export class PokemonListComponent implements OnInit {
   @Input() list: List[] = [];
 
   constructor() {}
