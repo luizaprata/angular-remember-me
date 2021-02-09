@@ -11,9 +11,10 @@ export class PokemonListComponent implements OnInit {
   pokemonsAbility: PokemonsAbility[] = [];
 
   constructor(private pokemonService: PokemonService) {}
+
   ngOnInit(): void {
     this.pokemonService
-      .listAbility()
+      .listAbility(100, 100)
       .subscribe((list) => (this.pokemonsAbility = list.results));
   }
 }

@@ -1,0 +1,9 @@
+<div *ngIf="!pokemon">
+<p>carregando...</p>
+</div>
+
+<div *ngIf="pokemon">
+  <p>{{pokemon.name}}</p>
+  <p>{{pokemon.height}}</p>
+  <p>{{pokemon.weight}}</p>
+</div>
