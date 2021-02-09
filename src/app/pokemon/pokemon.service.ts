@@ -3,16 +3,16 @@ import { Injectable } from '@angular/core';
 
 const POKE_API = 'https://pokeapi.co/api/v2';
 
-export type PokemonsAbility = {
+export type List = {
   name: string;
   url: string;
 };
 
-export type PokemonsAbilityResponse = {
+export type PokemonsListResponse = {
   count: number;
   next: string;
   previous: string;
-  results: PokemonsAbility[];
+  results: List[];
 };
 
 export type PokemonResponse = {
@@ -29,7 +29,7 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
 
   listAbility(limit: number, offset: number) {
-    return this.http.get<PokemonsAbilityResponse>(
+    return this.http.get<PokemonsListResponse>(
       `${POKE_API}/pokemon/?limit=${limit}&offset=${offset}`
     );
   }

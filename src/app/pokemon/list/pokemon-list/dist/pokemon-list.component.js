@@ -11,13 +11,18 @@ var core_1 = require("@angular/core");
 var PokemonListComponent = /** @class */ (function () {
     function PokemonListComponent(pokemonService) {
         this.pokemonService = pokemonService;
-        this.pokemonsAbility = [];
+        this.pokemonsList = [];
+        this.filter = '';
     }
     PokemonListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.pokemonService
             .listAbility(100, 100)
-            .subscribe(function (list) { return (_this.pokemonsAbility = list.results); });
+            .subscribe(function (list) { return (_this.pokemonsList = list.results); });
+    };
+    PokemonListComponent.prototype.emitFilter = function (event) {
+        var element = event.target;
+        this.filter = element.value;
     };
     PokemonListComponent = __decorate([
         core_1.Component({
