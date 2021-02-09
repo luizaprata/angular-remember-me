@@ -2,8 +2,4 @@
   <input type="search" placeholder="search pokemon..." autofocus (keyup)="emitFilter($event)" />
 </form>
 
-{{filter}}
-
-<div *ngFor="let pokemon of pokemonsList">
-  <app-pokemon-item [name]="pokemon.name"></app-pokemon-item>
-</div>
+<app-pokemons [list]="pokemonsList | filterByPokemonName: filter"></app-pokemons>

@@ -6,15 +6,15 @@ import { PokemonItemComponent } from './pokemon-item/pokemon-item.component';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { RouterModule } from '@angular/router';
-import { FilterByNamePipe } from './pokemon-list/filter-by-name.pipe';
+import { FilterByPokemonNamePipe } from './pokemon-list/filter-by-pokemon-name.pipe';
 import { PokemonsComponent } from './pokemon-list/pokemons/pokemons.component';
 
 @NgModule({
   declarations: [
+    FilterByPokemonNamePipe,
     PokemonItemComponent,
     PokemonListComponent,
     PokemonDetailComponent,
-    FilterByNamePipe,
     PokemonsComponent,
   ],
   imports: [HttpClientModule, CommonModule, RouterModule],

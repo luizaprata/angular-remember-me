@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { List, PokemonService } from '../../pokemon.service';
+import { List, PokemonService } from '../pokemon.service';
 
 type HTMLElementEvent<T extends HTMLElement> = KeyboardEvent & {
   target: T;
