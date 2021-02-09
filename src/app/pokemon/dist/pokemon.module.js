@@ -10,9 +10,11 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/common/http");
 var common_1 = require("@angular/common");
 var pokemon_item_component_1 = require("./pokemon-item/pokemon-item.component");
-var pokemon_list_component_1 = require("./list/pokemon-list/pokemon-list.component");
+var pokemon_list_component_1 = require("./pokemon-list/pokemon-list.component");
 var pokemon_detail_component_1 = require("./pokemon-detail/pokemon-detail.component");
 var router_1 = require("@angular/router");
+var filter_by_name_pipe_1 = require("./pokemon-list/filter-by-name.pipe");
+var pokemons_component_1 = require("./pokemon-list/pokemons/pokemons.component");
 var PokemonModules = /** @class */ (function () {
     function PokemonModules() {
     }
@@ -22,6 +24,8 @@ var PokemonModules = /** @class */ (function () {
                 pokemon_item_component_1.PokemonItemComponent,
                 pokemon_list_component_1.PokemonListComponent,
                 pokemon_detail_component_1.PokemonDetailComponent,
+                filter_by_name_pipe_1.FilterByNamePipe,
+                pokemons_component_1.PokemonsComponent,
             ],
             imports: [http_1.HttpClientModule, common_1.CommonModule, router_1.RouterModule]
         })
