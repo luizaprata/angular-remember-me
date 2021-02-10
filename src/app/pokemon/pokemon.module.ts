@@ -8,6 +8,7 @@ import { FilterByPokemonNamePipe } from './pokemon-list-screen/filter-by-pokemon
 import { PokemonListScreenComponent } from './pokemon-list-screen/pokemon-list-screen.component';
 import { PokemonListComponent } from './pokemon-list-screen/list/list.component';
 import { PokemonListItemComponent } from './pokemon-list-screen/item/item.component';
+import { LoadMoreButtonComponent } from './pokemon-list-screen/load-more-button/load-more-button.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { PokemonListItemComponent } from './pokemon-list-screen/item/item.compon
     PokemonListScreenComponent,
     PokemonListComponent,
     PokemonListItemComponent,
+    LoadMoreButtonComponent,
   ],
   imports: [HttpClientModule, CommonModule, RouterModule],
 })

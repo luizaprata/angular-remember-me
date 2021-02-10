@@ -16,6 +16,6 @@ export class PokemonListScreenResolver
   constructor(private service: PokemonService) {}
 
   resolve(): Observable<PokemonsListResponse> {
-    return this.service.listAbility(100, 100);
+    return this.service.listAbility(1, 100);
   }
 }
