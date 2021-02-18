@@ -1,4 +1,4 @@
-<app-search (handleTyping)="filter = $event"></app-search>
+<app-search (handleTyping)="filter = $event" [value]="filter"></app-search>
 
 <app-pokemon-list
   [currentPage]="currentPage"

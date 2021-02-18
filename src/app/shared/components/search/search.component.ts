@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  Input,
   OnDestroy,
   OnInit,
   Output,
@@ -15,6 +16,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit, OnDestroy {
   @Output() handleTyping = new EventEmitter<string>();
+  @Input() value = '';
 
   debounce: Subject<string> = new Subject<string>();
 
