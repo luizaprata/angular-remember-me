@@ -16,7 +16,11 @@ export class PokemonListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onLoadMoreClick(): void {
+  onLoadPrev(): void {
+    this.router.navigate([`/${this.currentPage - 1}`]);
+  }
+
+  onLoadNext(): void {
     this.router.navigate([`/${this.currentPage + 1}`]);
   }
 }

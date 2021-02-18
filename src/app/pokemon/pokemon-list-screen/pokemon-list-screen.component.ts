@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { List } from '../pokemon.service';
+import { List, PokemonsListResponse } from '../pokemon.service';
 
 @Component({
   templateUrl: './pokemon-list-screen.component.html',
@@ -15,11 +15,24 @@ export class PokemonListScreenComponent implements OnInit, OnDestroy {
   filter = '';
   canLoadMore = false;
   currentPage = 1;
+  pokemonsListSubscription?: Subscription;
+  paramsSubscription?: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.pokemonsList = this.activatedRoute.snapshot.data.pokemonsList.results;
+    this.pokemonsListSubscription = this.activatedRoute.data.subscribe(
+      (data) => {
+        this.pokemonsList = data.pokemonsList.results;
+        console.log(data);
+        this.canLoadMore = data.pokemonsList.next !== null;
+      }
+    );
+
+    this.paramsSubscription = this.activatedRoute.params.subscribe((params) => {
+      this.currentPage = parseInt(params ? params.page : 1, 10);
+    });
+
     this.debounce.pipe(debounceTime(300)).subscribe((value: string) => {
       this.filter = value;
     });
@@ -32,6 +45,8 @@ export class PokemonListScreenComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.debounce.unsubscribe();
+    this.pokemonsListSubscription?.unsubscribe();
+    this.paramsSubscription?.unsubscribe();
   }
 
   loadMorePokemons(): void {}

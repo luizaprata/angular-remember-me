@@ -4,14 +4,13 @@
   <app-button
     *ngIf="currentPage>1"
     [name]="(currentPage-1).toString()"
-    [disabled]="canLoadMore"
-    (handleClick)="onLoadMoreClick()"
+    (handleClick)="onLoadPrev()"
   ></app-button>
   
   <app-button
+    *ngIf="canLoadMore"
     [name]="(currentPage+1).toString()"
-    [disabled]="canLoadMore"
-    (handleClick)="onLoadMoreClick()"
+    (handleClick)="onLoadNext()"
   ></app-button>
   <div *ngFor="let pokemon of list">
     <app-pokemon-list-item [name]="pokemon.name"></app-pokemon-list-item>

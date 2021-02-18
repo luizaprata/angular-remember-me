@@ -13,6 +13,6 @@ export class PokemonListScreenResolver
   resolve(route: ActivatedRouteSnapshot): Observable<PokemonsListResponse> {
     const page = route.paramMap.get('page');
     const pageNumber = page ? parseInt(page, 10) : 0;
-    return this.service.listAbility(isNaN(pageNumber) ? 0 : pageNumber, 100);
+    return this.service.listAbility(pageNumber, 100);
   }
 }
