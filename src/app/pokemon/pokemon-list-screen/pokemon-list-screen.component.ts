@@ -24,7 +24,6 @@ export class PokemonListScreenComponent implements OnInit, OnDestroy {
     this.pokemonsListSubscription = this.activatedRoute.data.subscribe(
       (data) => {
         this.pokemonsList = data.pokemonsList.results;
-        console.log(data);
         this.canLoadMore = data.pokemonsList.next !== null;
       }
     );

@@ -5,6 +5,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PokemonListScreenComponent } from './pokemon/pokemon-list-screen/pokemon-list-screen.component';
 import { PokemonDetailScreenComponent } from './pokemon/pokemon-detail-screen/pokemon-detail-screen.component';
 import { PokemonListScreenResolver } from './pokemon/pokemon-list-screen/pokemon-list-screen.resolver';
+import { PokemonDetailScreenResolver } from './pokemon/pokemon-detail-screen/pokemon-detail-screen.resolver';
 
 const routes: Routes = [
   {
@@ -22,8 +23,12 @@ const routes: Routes = [
     component: PokemonListScreenComponent,
     resolve: { pokemonsList: PokemonListScreenResolver },
   },
-  { path: '', redirectTo: '/1', pathMatch: 'full' },
-  { path: 'pokemon/:name', component: PokemonDetailScreenComponent },
+  { path: '', redirectTo: '/0', pathMatch: 'full' },
+  {
+    path: 'pokemon/:name',
+    component: PokemonDetailScreenComponent,
+    resolve: { pokemonDetails: PokemonDetailScreenResolver },
+  },
   { path: '**', component: NotFoundComponent },
 ];
 

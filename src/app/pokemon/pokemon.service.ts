@@ -21,6 +21,7 @@ export type PokemonResponse = {
   name: string;
   height: number;
   weight: number;
+  sprites: { other: { 'official-artwork': { front_default: string } } };
 };
 
 @Injectable({

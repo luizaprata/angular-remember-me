@@ -1,26 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PokemonService, PokemonResponse } from '../pokemon.service';
+import { Subscription } from 'rxjs';
+import { PokemonResponse } from '../pokemon.service';
 
 @Component({
   templateUrl: './pokemon-detail-screen.component.html',
   styleUrls: ['./pokemon-detail-screen.component.scss'],
 })
-export class PokemonDetailScreenComponent implements OnInit {
-  pokemon: PokemonResponse | null = null;
+export class PokemonDetailScreenComponent implements OnInit, OnDestroy {
+  pokemonDetails?: PokemonResponse;
+  pokemonDetailsSubscription?: Subscription;
 
-  constructor(
-    private pokemonService: PokemonService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const name: string = this.activatedRoute.snapshot.params.name;
+    this.pokemonDetailsSubscription = this.activatedRoute.data.subscribe(
+      (data) => {
+        this.pokemonDetails = data.pokemonDetails;
+      }
+    );
+  }
 
-    if (name) {
-      this.pokemonService
-        .detailPokemon(name)
-        .subscribe((pokemon) => (this.pokemon = pokemon));
-    }
+  ngOnDestroy(): void {
+    this.pokemonDetailsSubscription?.unsubscribe();
   }
 }

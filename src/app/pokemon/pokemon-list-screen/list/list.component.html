@@ -2,7 +2,7 @@
 
 <ng-template #hasPokemons>
   <app-button
-    *ngIf="currentPage>1"
+    *ngIf="currentPage>0"
     [name]="(currentPage-1).toString()"
     (handleClick)="onLoadPrev()"
   ></app-button>

@@ -1,9 +1,6 @@
-<div *ngIf="!pokemon">
-<p>carregando...</p>
-</div>
-
-<div *ngIf="pokemon">
-  <p>{{pokemon.name}}</p>
-  <p>{{pokemon.height}}</p>
-  <p>{{pokemon.weight}}</p>
+<div *ngIf="pokemonDetails">
+  <img [src]="pokemonDetails.sprites.other['official-artwork'].front_default"/>
+  <p>{{pokemonDetails.name}}</p>
+  <p>{{pokemonDetails.height}}</p>
+  <p>{{pokemonDetails.weight}}</p>
 </div>
