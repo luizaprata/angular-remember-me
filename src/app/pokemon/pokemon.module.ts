@@ -9,6 +9,7 @@ import { PokemonListScreenComponent } from './pokemon-list-screen/pokemon-list-s
 import { PokemonListComponent } from './pokemon-list-screen/list/list.component';
 import { PokemonListItemComponent } from './pokemon-list-screen/item/item.component';
 import { ComponentsModule } from '../shared/components/components.module';
+import { DirectivesModule } from '../shared/directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,12 @@ import { ComponentsModule } from '../shared/components/components.module';
     PokemonListComponent,
     PokemonListItemComponent,
   ],
-  imports: [HttpClientModule, CommonModule, RouterModule, ComponentsModule],
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    RouterModule,
+    ComponentsModule,
+    DirectivesModule,
+  ],
 })
 export class PokemonModule {}

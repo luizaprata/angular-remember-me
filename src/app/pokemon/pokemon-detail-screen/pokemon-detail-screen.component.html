@@ -1,5 +1,5 @@
 <div *ngIf="pokemonDetails">
-  <img [src]="pokemonDetails.sprites.other['official-artwork'].front_default"/>
+  <img appDarkenOnHover [src]="pokemonDetails.sprites.other['official-artwork'].front_default"/>
   <p>{{pokemonDetails.name}}</p>
   <p>{{pokemonDetails.height}}</p>
   <p>{{pokemonDetails.weight}}</p>
