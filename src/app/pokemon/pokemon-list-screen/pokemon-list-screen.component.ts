@@ -10,10 +10,11 @@ import { List } from '../pokemon.service';
   styleUrls: ['./pokemon-list-screen.component.scss'],
 })
 export class PokemonListScreenComponent implements OnInit, OnDestroy {
-  pokemonsList: List[] = [];
-  filter: string = '';
-
   debounce: Subject<string> = new Subject<string>();
+  pokemonsList: List[] = [];
+  filter = '';
+  canLoadMore = false;
+  currentPage = 1;
 
   constructor(private activatedRoute: ActivatedRoute) {}
 
@@ -24,7 +25,7 @@ export class PokemonListScreenComponent implements OnInit, OnDestroy {
     });
   }
 
-  emitFilter(event: KeyboardEvent) {
+  emitFilter(event: KeyboardEvent): void {
     const element = event.target as HTMLInputElement;
     this.debounce.next(element.value);
   }
@@ -32,4 +33,6 @@ export class PokemonListScreenComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.debounce.unsubscribe();
   }
+
+  loadMorePokemons(): void {}
 }

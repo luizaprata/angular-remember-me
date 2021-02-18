@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { PokemonListScreenComponent } from './pokemon/pokemon-list-screen/pokemon-list-screen.component';
@@ -8,10 +8,21 @@ import { PokemonListScreenResolver } from './pokemon/pokemon-list-screen/pokemon
 
 const routes: Routes = [
   {
-    path: '',
+    matcher: (url) => {
+      if (url[0] && url[0].path.match(/^\d+$/)) {
+        return {
+          consumed: url,
+          posParams: {
+            page: new UrlSegment(url[0].path, {}),
+          },
+        };
+      }
+      return null;
+    },
     component: PokemonListScreenComponent,
     resolve: { pokemonsList: PokemonListScreenResolver },
   },
+  { path: '', redirectTo: '/1', pathMatch: 'full' },
   { path: 'pokemon/:name', component: PokemonDetailScreenComponent },
   { path: '**', component: NotFoundComponent },
 ];

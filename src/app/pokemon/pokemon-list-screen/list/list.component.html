@@ -1,5 +1,19 @@
-<div *ngIf="!list.length"><p>Nenhum pokemon!</p></div>
+<div *ngIf="!list.length; else hasPokemons"><p>Nenhum pokemon!</p></div>
 
-<div *ngFor="let pokemon of list">
-  <app-pokemon-list-item [name]="pokemon.name"></app-pokemon-list-item>
-</div>
+<ng-template #hasPokemons>
+  <app-button
+    *ngIf="currentPage>1"
+    [name]="(currentPage-1).toString()"
+    [disabled]="canLoadMore"
+    (handleClick)="onLoadMoreClick()"
+  ></app-button>
+  
+  <app-button
+    [name]="(currentPage+1).toString()"
+    [disabled]="canLoadMore"
+    (handleClick)="onLoadMoreClick()"
+  ></app-button>
+  <div *ngFor="let pokemon of list">
+    <app-pokemon-list-item [name]="pokemon.name"></app-pokemon-list-item>
+  </div>
+</ng-template>

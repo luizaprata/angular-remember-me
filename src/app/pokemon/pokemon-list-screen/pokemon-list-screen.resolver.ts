@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  Router,
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-} from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
+import { Observable } from 'rxjs';
 import { PokemonService, PokemonsListResponse } from '../pokemon.service';
 
 @Injectable({
@@ -15,7 +10,9 @@ export class PokemonListScreenResolver
   implements Resolve<Observable<PokemonsListResponse>> {
   constructor(private service: PokemonService) {}
 
-  resolve(): Observable<PokemonsListResponse> {
-    return this.service.listAbility(1, 100);
+  resolve(route: ActivatedRouteSnapshot): Observable<PokemonsListResponse> {
+    const page = route.paramMap.get('page');
+    const pageNumber = page ? parseInt(page, 10) : 0;
+    return this.service.listAbility(isNaN(pageNumber) ? 0 : pageNumber, 100);
   }
 }

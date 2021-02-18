@@ -1,5 +1,14 @@
 <form>
-  <input type="search" placeholder="search pokemon..." autofocus (keyup)="emitFilter($event)" />
+  <input
+    type="search"
+    placeholder="search pokemon..."
+    autofocus
+    (keyup)="emitFilter($event)"
+  />
 </form>
 
-<app-pokemon-list [list]="pokemonsList | filterByPokemonName: filter"></app-pokemon-list>
+<app-pokemon-list
+  [currentPage]="currentPage"
+  [canLoadMore]="canLoadMore"
+  [list]="pokemonsList | filterByPokemonName: filter"
+></app-pokemon-list>
